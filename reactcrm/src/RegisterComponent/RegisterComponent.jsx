@@ -1,21 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { nanoid } from "@reduxjs/toolkit";
 
 export default function RegisterComponent() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const getRandId = () => {
-        return nanoid(5);
-    }
 
     async function postUser() {
-        await axios.post('http://127.0.0.1/api/v1/register', {
-            username: username,
-            password: password,
-        })
+        await axios.post('http://127.0.0.1/api/v1/register', JSON.stringify({
+            "username": `${username}`,
+            "password": `${password}`,
+            
+        }))
         .then((response) => {
             console.log(response);
         })
