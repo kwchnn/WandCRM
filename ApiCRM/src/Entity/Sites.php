@@ -27,10 +27,10 @@ class Sites
     private ?string $icon = null;
 
     #[ORM\Column(type: "datetime", columnDefinition: "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")]
-    private ?string $created_at = null;
+    private $created_at = null;
 
     #[ORM\Column(type: "datetime", columnDefinition: "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")]
-    private ?string $updated_ad = null;
+    private $updated_ad = null;
 
     #[ORM\ManyToOne(targetEntity: "App\Entity\User", inversedBy: "sites")]
     private $user;
