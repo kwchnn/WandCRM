@@ -28,7 +28,7 @@ class UserDataController extends AbstractController
         return new JsonResponse($user_data, 200);
     }
 
-    #[Route('/api/v1/sites', name: 'user_sites', methods: ['POST', 'OPTIONS'])]
+    #[Route('/api/v1/sites', name: 'user_sites', methods: ['GET', 'OPTIONS'])]
     public function getUserSites(Request $request): Response
     {
         $get_user_information_object = $this->read_user_information;
