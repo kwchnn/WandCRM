@@ -3,23 +3,22 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function RegisterComponent() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
 
     async function postUser() {
-        await axios.post('http://127.0.0.1/api/v1/register', JSON.stringify({
-            "username": `${username}`,
-            "password": `${password}`,
-            
-        }))
-        .then((response) => {
-            console.log(response);
+        await axios.post('http://127.0.0.1/api/v1/auth/login', {
+            "username": username,
+            "password": password
+        }, {
+            withCredentials: false
         })
-        .catch(err => {
-            console.log(err);
+        .then(response => {
+            console.log(response.data);
         });
     }
+
 
     return (
         <div className="container grd">
@@ -37,7 +36,7 @@ export default function RegisterComponent() {
                             <input type="password" class="form-control bg-dark text-white" id="thisPass" aria-describedby="emailHelp"  value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </div>
                         <br />
-                        <button type="submit" className="btn btn-success" onClick={function(e) {e.preventDefault(); postUser() }}>Submit</button>
+                        <button type="submit" className="btn btn-success" onClick={function(e) {e.preventDefault(); postUser(); }}>Submit</button>
                     </form>
                 </div>
             </div>
