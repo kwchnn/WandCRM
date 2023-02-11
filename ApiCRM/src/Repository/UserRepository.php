@@ -58,17 +58,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      *  Get User Object
-     * @param mixed $token
+     * @param string $email
      * @return object
      */
-    public function getUser($token): ?object
+    public function getUser(string $email): ?object
     {
         $user_manager = $this->getEntityManager();
-        $user = $user_manager->getRepository(User::class)->findOneBy(['email' => $token->getUserIdentifier()]);
-        if ($user) {
-            return $user;
-        }
-        return null;
+        $user = $user_manager->getRepository(User::class)->findOneBy(['email' => $email]);
+        return $user;
 
     }
 

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Sites;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\Void_;
 
 /**
  * @extends ServiceEntityRepository<Sites>
@@ -37,6 +38,16 @@ class SitesRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    /**
+     * return sites array by user_id
+     */
+    public function getUserSites(int $id): array
+    {
+        $user_sites_manager = $this->getEntityManager();
+        $sites = $user_sites_manager->getRepository(Sites::class)->findBy(['user_id' => $id]);
+        return $sites;
     }
 
 //    /**
