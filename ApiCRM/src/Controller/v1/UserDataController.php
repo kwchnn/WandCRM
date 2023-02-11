@@ -19,7 +19,7 @@ class UserDataController extends AbstractController
 
     }
     
-    #[Route('/api/v1/me', name: 'user_data', methods: ['POST', 'OPTIONS'])]
+    #[Route('/api/v1/me', name: 'user_data', methods: ['GET', 'OPTIONS'])]
     public function getUserData(Request $request): Response
     {
         $get_user_information_object = $this->read_user_information;

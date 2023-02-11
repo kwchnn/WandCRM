@@ -16,7 +16,7 @@ class RegisterUserController extends AbstractController
 
     }
 
-    #[Route('/api/v1/register', name: 'register', methods: ['POST', 'OPTIONS', 'GET'])]
+    #[Route('/api/v1/register', name: 'register', methods: ['POST', 'OPTIONS'])]
     public function __invoke(Request $request): Response
     {
             if ($this->register_user->register($request->getContent()))
